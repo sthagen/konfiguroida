@@ -16,10 +16,10 @@ yarn add konfiguroida
 
 ```js
 # using require
-const { cook, partial } = require('konfiguroida');
+const { cook, partial } = require('konfiguroida')
 
 # using import
-import { cook, partial } from 'konfiguroida';
+import { cook, partial } from 'konfiguroida'
 ```
 
 ## Example
