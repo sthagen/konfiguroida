@@ -35,8 +35,15 @@ const cookFromFruits = partial(cookFrom, 'fruits')
 const cookFromFruitsConfiture = partial(cookFromFruits, 'confiture')
 
 // Cook the confitures:
-const confitures = cookFromFruitsConfiture([[{size: 'XXS', ['currants']], [{size: 'XXL'}, null]])
+const confitures = cookFromFruitsConfiture([[{size: 'XXS'}, ['currants']], [{size: 'XXL'}, null]])
 console.log(confitures)
+//[
+//  { confiture: { size: 'XXS' }, fruits: [ 'currants' ] },
+//  {
+//    confiture: { size: 'XXL' },
+//    fruits: [ 'apples', 'oranges', 'peaches', 'pears' ]
+//  }
+//]
 ```
 
 ## Status
