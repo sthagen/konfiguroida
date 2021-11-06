@@ -1,6 +1,6 @@
 const { test } = require('uvu')
 const assert = require('uvu/assert')
-const { cook, partial } = require('../index')
+const { cook, partial } = require('../src/index')
 
 test('partial', () => {
   const add = (x, y) => x + y
