@@ -4,7 +4,7 @@ Confiture (Finnish konfiguroida) with whole fruits - data oriented programming f
 
 ## Installation
 
-```js
+```console
 # using npm
 npm install konfiguroida
 
@@ -15,10 +15,10 @@ yarn add konfiguroida
 ## Usage
 
 ```js
-# using require
+// using require
 const { cook, partial } = require('konfiguroida')
 
-# using import
+// using import
 import { cook, partial } from 'konfiguroida'
 ```
 

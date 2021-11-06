@@ -1,16 +1,16 @@
 ## Usage
 
-```js
-# using require
+```javascript
+// using require
 const { cook, partial } = require('konfiguroida')
 
-# using import
+// using import
 import { cook, partial } from 'konfiguroida'
 ```
 
 ## Example
 
-```js
+```javascript
 // Some population to sample from:
 const FRUITS = ['apples', 'currants', 'oranges', 'peaches', 'pears']
 

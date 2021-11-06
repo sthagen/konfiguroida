@@ -1,6 +1,6 @@
 ## Installation
 
-```js
+```console
 # using npm
 npm install konfiguroida
 
