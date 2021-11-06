@@ -33,7 +33,7 @@ const cook = (population, sample, feature, pairs) => {
 
   const rest = population.filter(member => !used.includes(member))  // naive set difference
 
-  const variation = derived.at(-1)[0]
+  const variation = derived[derived.length-1][0]
   derived[(derived.length - 1)] = [variation, rest]  // complete population
 
   const make = pairZip(feature, sample)  // primed object creator
