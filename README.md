@@ -38,3 +38,9 @@ const cookFromFruitsConfiture = partial(cookFromFruits, 'confiture')
 const confitures = cookFromFruitsConfiture([[{size: 'XXS', ['currants']], [{size: 'XXL'}, null]])
 console.log(confitures)
 ```
+
+## Status
+
+Experimental.
+
+**Note**: The default branch is `default`.
