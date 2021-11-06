@@ -7,6 +7,9 @@
     "uvu": "^0.5.2"
   },
   "description": "Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.",
+  "engines": {
+    "node": ">=16"
+  },
   "homepage": "https://sthagen.github.io/konfiguroida/",
   "keywords": [
     "configuration",
