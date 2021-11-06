@@ -30,7 +30,7 @@ import { cook, partial } from 'konfiguroida';
 const FRUITS = ['apples', 'currants', 'oranges', 'peaches', 'pears']
 
 // Preparing the kitchen for mapping feature variations to samples from a population:
-const cookFrom = partial(cook, POPULATION)
+const cookFrom = partial(cook, FRUITS)
 const cookFromFruits = partial(cookFrom, 'fruits')
 const cookFromFruitsConfiture = partial(cookFromFruits, 'confiture')
 
