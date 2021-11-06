@@ -1,17 +1,3 @@
-# konfiguroida
-
-Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.
-
-## Installation
-
-```js
-# using npm
-npm install konfiguroida
-
-# using yarn
-yarn add konfiguroida
-```
-
 ## Usage
 
 ```js
@@ -47,9 +33,3 @@ console.log(confitures)
 //  }
 //]
 ```
-
-## Status
-
-Experimental.
-
-**Note**: The default branch is `default`.
