@@ -1,26 +1,17 @@
 # API
 
-## partial
-
- * Returns an function with the first argument primed.
- * @param {function} func - The function the following parameter is applied to as first argument.
- * @param {string} first - The value to be fixed as first argument.
-
-```javascript
-const partial = (func, first) => {
-  return (...rest) => {
-    return func(first, ...rest)
-  }
-}
-```
+The module exports two functions `cook` amd `partial`. The latter to create specializations of the cooking.
 
 ## cook
 
- * Returns an array of objects that map population samples to distinct features.
- * @param {array} population - The array with all members of the population.
- * @param {string} sample - The key mapping to the sample from the population.
- * @param {string} feature - The key mapping to the feature variations.
- * @param {array} pairs - Pairs of features and either an array of samples or null for the last pair.
+Returns an array of objects that map population samples to distinct features.
+
+### parameters
+
+* {array} population - The array with all members of the population.
+* {string} sample - The key mapping to the sample from the population.
+* {string} feature - The key mapping to the feature variations.
+* {array} pairs - Pairs of features and either an array of samples or null for the last pair.
 
 ```javascript
 const cook = (population, sample, feature, pairs) => {
@@ -38,5 +29,22 @@ const cook = (population, sample, feature, pairs) => {
   derived.forEach((pair, index, seq) => seq[index] = make(...pair))
 
   return derived
+}
+```
+
+## partial
+
+Returns an function with the first argument primed.
+
+### parameters
+
+* {function} func - The function the following parameter is applied to as first argument.
+* {string} first - The value to be fixed as first argument.
+
+```javascript
+const partial = (func, first) => {
+  return (...rest) => {
+    return func(first, ...rest)
+  }
 }
 ```
