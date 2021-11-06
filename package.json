@@ -1,0 +1,24 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "c8": "^7.2.0",
+    "uvu": "^0.2.0"
+  },
+  "description": "Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.",
+  "keywords": [
+    "configuration",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "konfiguroida",
+  "private": false,
+  "repository": "sthagen/konfiguroida",
+  "scripts": {
+    "test": "uvu tests",
+    "test:coverage": "c8 --include=src npm test",
+    "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
+    "test:html": "c8 report --reporter=html"
+  },
+  "version": "2021.11.6"
+}
