@@ -323,16 +323,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#partial" class="md-nav__link">
-    partial
+  <a href="#cook" class="md-nav__link">
+    cook
   </a>
+  
+    <nav class="md-nav" aria-label="cook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cook" class="md-nav__link">
-    cook
+  <a href="#partial" class="md-nav__link">
+    partial
   </a>
+  
+    <nav class="md-nav" aria-label="partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -387,16 +413,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#partial" class="md-nav__link">
-    partial
+  <a href="#cook" class="md-nav__link">
+    cook
   </a>
+  
+    <nav class="md-nav" aria-label="cook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cook" class="md-nav__link">
-    cook
+  <a href="#partial" class="md-nav__link">
+    partial
   </a>
+  
+    <nav class="md-nav" aria-label="partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -415,25 +467,15 @@
                 
                 
                 <h1 id="api">API</h1>
-<h2 id="partial">partial</h2>
-<ul>
-<li>Returns an function with the first argument primed.</li>
-<li>@param {function} func - The function the following parameter is applied to as first argument.</li>
-<li>@param {string} first - The value to be fixed as first argument.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">partial</span> <span class="o">=</span> <span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">first</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(...</span><span class="nx">rest</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>The module exports two functions <code>cook</code> amd <code>partial</code>. The latter to create specializations of the cooking.</p>
 <h2 id="cook">cook</h2>
+<p>Returns an array of objects that map population samples to distinct features.</p>
+<h3 id="parameters">parameters</h3>
 <ul>
-<li>Returns an array of objects that map population samples to distinct features.</li>
-<li>@param {array} population - The array with all members of the population.</li>
-<li>@param {string} sample - The key mapping to the sample from the population.</li>
-<li>@param {string} feature - The key mapping to the feature variations.</li>
-<li>@param {array} pairs - Pairs of features and either an array of samples or null for the last pair.</li>
+<li>{array} population - The array with all members of the population.</li>
+<li>{string} sample - The key mapping to the sample from the population.</li>
+<li>{string} feature - The key mapping to the feature variations.</li>
+<li>{array} pairs - Pairs of features and either an array of samples or null for the last pair.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">cook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">population</span><span class="p">,</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">feature</span><span class="p">,</span> <span class="nx">pairs</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">derived</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">pairs</span><span class="p">]</span>  <span class="c1">// Create a copy of the pairs array</span>
@@ -450,6 +492,19 @@
   <span class="nx">derived</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">pair</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">seq</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">seq</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">make</span><span class="p">(...</span><span class="nx">pair</span><span class="p">))</span>
 
   <span class="k">return</span> <span class="nx">derived</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="partial">partial</h2>
+<p>Returns an function with the first argument primed.</p>
+<h3 id="parameters_1">parameters</h3>
+<ul>
+<li>{function} func - The function the following parameter is applied to as first argument.</li>
+<li>{string} first - The value to be fixed as first argument.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">partial</span> <span class="o">=</span> <span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">first</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(...</span><span class="nx">rest</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">)</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
                 
