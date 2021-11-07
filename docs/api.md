@@ -1,50 +1,40 @@
 # API
 
-The module exports two functions `cook` amd `partial`. The latter to create specializations of the cooking.
+The module exports two functions `cook` amd `partial`. The latter only to create specializations of the cooking.
 
 ## cook
 
-Returns an array of objects that map population samples to distinct features.
+Derive an array of objects from pairs that map population samples to distinct features.
 
-### parameters
+The default (but optional) validation ensures:
 
-* {array} population - array with all members of the population.
-* {string} sample - key mapping to the sample from the population.
-* {string} feature - key mapping to the feature variations.
-* {array} pairs - pairs of features and array of samples (null for final pair).
+*   population and pairs both are non-empty arrays
+*   features are unique (first elements of pairs)
+*   pairs second entries only provide members of population
 
-```javascript
-const cook = (population, sample, feature, pairs) => {
-  derived = [...pairs]  // Create a copy of the pairs array
+### Parameters
 
-  const used = []  // registry of used population members
-  derived.forEach(pair => pair[1] ? pair[1].forEach(e => used.push(e)) : null)
+*   `population` **[array][13]** array with all members of the population.
+*   `sample` **[string][12]** key mapping to the sample from the population.
+*   `feature` **[string][12]** key mapping to the feature variations.
+*   `pairs` **[array][13]** pairs of features and array of samples (null for final pair).
+*   `force` **bool** (false does / true does not) validate use. (optional, default `false`)
 
-  const rest = population.filter(m => !used.includes(m))  // set difference
-
-  const variation = derived[derived.length-1][0]
-  derived[(derived.length - 1)] = [variation, rest]  // complete population
-
-  const make = pairZip(feature, sample)  // primed object creator
-  derived.forEach((pair, i, seq) => seq[i] = make(...pair))
-
-  return derived
-}
-```
+Returns **[array][13]** of objects that map population samples to distinct features.
 
 ## partial
 
-Returns a function with the first argument primed.
+Partially apply to a function the first argument and return specialization.
 
-### parameters
+### Parameters
 
-* {function} func - function to be specialized.
-* {string} first - value to be fixed as first positional argument.
+*   `func` **[function][11]** function to be specialized.
+*   `first` **[string][12]** value to be fixed as first positional argument.
 
-```javascript
-const partial = (func, first) => {
-  return (...rest) => {
-    return func(first, ...rest)
-  }
-}
-```
+Returns **[function][11]** function with the first argument primed.
+
+[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
