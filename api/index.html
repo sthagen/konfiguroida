@@ -472,24 +472,24 @@
 <p>Returns an array of objects that map population samples to distinct features.</p>
 <h3 id="parameters">parameters</h3>
 <ul>
-<li>{array} population - The array with all members of the population.</li>
-<li>{string} sample - The key mapping to the sample from the population.</li>
-<li>{string} feature - The key mapping to the feature variations.</li>
-<li>{array} pairs - Pairs of features and either an array of samples or null for the last pair.</li>
+<li>{array} population - array with all members of the population.</li>
+<li>{string} sample - key mapping to the sample from the population.</li>
+<li>{string} feature - key mapping to the feature variations.</li>
+<li>{array} pairs - pairs of features and array of samples (null for final pair).</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">cook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">population</span><span class="p">,</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">feature</span><span class="p">,</span> <span class="nx">pairs</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">derived</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">pairs</span><span class="p">]</span>  <span class="c1">// Create a copy of the pairs array</span>
 
   <span class="kd">const</span> <span class="nx">used</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1">// registry of used population members</span>
-  <span class="nx">derived</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">pair</span> <span class="p">=&gt;</span> <span class="nx">pair</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="o">?</span> <span class="nx">pair</span><span class="p">[</span><span class="mf">1</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="p">=&gt;</span> <span class="nx">used</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">entry</span><span class="p">))</span> <span class="o">:</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="nx">derived</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">pair</span> <span class="p">=&gt;</span> <span class="nx">pair</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="o">?</span> <span class="nx">pair</span><span class="p">[</span><span class="mf">1</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">used</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span> <span class="o">:</span> <span class="kc">null</span><span class="p">)</span>
 
-  <span class="kd">const</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">population</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">member</span> <span class="p">=&gt;</span> <span class="o">!</span><span class="nx">used</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">member</span><span class="p">))</span>  <span class="c1">// naive set difference</span>
+  <span class="kd">const</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">population</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">m</span> <span class="p">=&gt;</span> <span class="o">!</span><span class="nx">used</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>  <span class="c1">// naive set difference</span>
 
-  <span class="kd">const</span> <span class="nx">variation</span> <span class="o">=</span> <span class="nx">derived</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">)[</span><span class="mf">0</span><span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">variation</span> <span class="o">=</span> <span class="nx">derived</span><span class="p">[</span><span class="nx">derived</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mf">1</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span>
   <span class="nx">derived</span><span class="p">[(</span><span class="nx">derived</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">variation</span><span class="p">,</span> <span class="nx">rest</span><span class="p">]</span>  <span class="c1">// complete population</span>
 
   <span class="kd">const</span> <span class="nx">make</span> <span class="o">=</span> <span class="nx">pairZip</span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span> <span class="nx">sample</span><span class="p">)</span>  <span class="c1">// primed object creator</span>
-  <span class="nx">derived</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">pair</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">seq</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">seq</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">make</span><span class="p">(...</span><span class="nx">pair</span><span class="p">))</span>
+  <span class="nx">derived</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">pair</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">seq</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">seq</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">make</span><span class="p">(...</span><span class="nx">pair</span><span class="p">))</span>
 
   <span class="k">return</span> <span class="nx">derived</span>
 <span class="p">}</span>
@@ -498,8 +498,8 @@
 <p>Returns a function with the first argument primed.</p>
 <h3 id="parameters_1">parameters</h3>
 <ul>
-<li>{function} func - The function the following parameter is applied to as first argument.</li>
-<li>{string} first - The value to be fixed as first argument.</li>
+<li>{function} func - function to be specialized.</li>
+<li>{string} first - value to be fixed as first positional argument.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">partial</span> <span class="o">=</span> <span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">first</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(...</span><span class="nx">rest</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
