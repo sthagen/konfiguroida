@@ -105,3 +105,4 @@ dist
 weg.js
 package-lock.json
 site/
+docs/local_api.md
