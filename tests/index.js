@@ -11,7 +11,6 @@ test('partial', () => {
 })
 
 test('cook empty population force', () => {
-  // Some population to sample from:
   const FRUITS = []
   const what = cook(
     FRUITS,
@@ -27,13 +26,56 @@ test('cook empty population force', () => {
 })
 
 test('cook empty population validated', () => {
-  // Some population to sample from:
   const FRUITS = []
   const what = cook(
     FRUITS,
     'fruits',
     'confiture',
     [[{size: 'XXS'}, ['currants']], [{size: 'XXL'}, null]]
+  )
+  assert.is(what, undefined)
+})
+
+test('cook non-array population validated', () => {
+  const FRUITS = {}
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['currants']], [{size: 'XXL'}, null]]
+  )
+  assert.is(what, undefined)
+})
+
+test('cook empty pairs validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    []
+  )
+  assert.is(what, undefined)
+})
+
+test('cook non-array pairs validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    {size: 'XXS'}
+  )
+  assert.is(what, undefined)
+})
+
+test('cook over population validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['apples']], [{size: 'XXL'}, null]]
   )
   assert.is(what, undefined)
 })
