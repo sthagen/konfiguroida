@@ -475,11 +475,12 @@
 <p>Software developers only have to list the smallest subsets and the cooking adds the rest.</p>
 <p>In default mode (without setting the optional <code>force</code> parameter to <code>true</code>) the <code>cook</code> function validates these aspects:</p>
 <ul>
-<li>population and pairs both are non-empty arrays</li>
+<li>population and pairs both are non-empty arrays of non-null values</li>
 <li>features are unique (first elements of pairs)</li>
 <li>pairs second entries only provide members of population</li>
 </ul>
-<p>If any validation of those aspects fails, <code>cook</code> returns <code>undefined</code> as (error) value.</p>
+<p>If any validation of those aspects fails, <code>cook</code> returns <code>undefined</code> as (error) value. 
+<strong>Note</strong>: Null values will be cleansed from population per default.</p>
 <h2 id="status">Status</h2>
 <p>Experimental.</p>
 <p><strong>Note</strong>: The default branch is <code>default</code>.</p>
