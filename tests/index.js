@@ -10,6 +10,34 @@ test('partial', () => {
   assert.is(addTwo(1), 3)
 })
 
+test('cook empty population force', () => {
+  // Some population to sample from:
+  const FRUITS = []
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['currants']], [{size: 'XXL'}, null]],
+    force=true
+  )
+  assert.equal(what, [
+    {confiture: {size: 'XXS'}, fruits: ['currants']},
+    {confiture: {size: 'XXL'}, fruits: []}
+  ])
+})
+
+test('cook empty population validated', () => {
+  // Some population to sample from:
+  const FRUITS = []
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['currants']], [{size: 'XXL'}, null]]
+  )
+  assert.is(what, undefined)
+})
+
 test('example', () => {
   // Some population to sample from:
   const FRUITS = ['apples', 'currants', 'oranges', 'peaches', 'pears']
