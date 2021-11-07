@@ -1,5 +1,10 @@
 # Change History
 
+## 2021.11.9
+
+* Extended engine compatibility downwards per github issue [#6 - Extend true compatibility down to node](https://github.com/sthagen/konfiguroida/issues/6)
+* Added more tests to document _abuse_ cases
+
 ## 2021.11.8
 
 * Implemented validation per github issue [#4 - Create validating cook mode as default](https://github.com/sthagen/konfiguroida/issues/4)
