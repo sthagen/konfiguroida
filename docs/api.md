@@ -34,7 +34,7 @@ const cook = (population, sample, feature, pairs) => {
 
 ## partial
 
-Returns an function with the first argument primed.
+Returns a function with the first argument primed.
 
 ### parameters
 
