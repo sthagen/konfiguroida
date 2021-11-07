@@ -20,11 +20,18 @@ const zip_pair = (first, second) => {
 
 /**
  * Returns an array of objects that map population samples to distinct features.
+ *
+ * The default (but optional) validation ensures:
+ *
+ * * population and pairs both are non-empty arrays
+ * * features are unique (first elements of pairs)
+ * * pairs second entries only provide members of population
+ *
  * @param {array} population - array with all members of the population.
  * @param {string} sample - key mapping to the sample from the population.
  * @param {string} feature - key mapping to the feature variations.
  * @param {array} pairs - pairs of features and array of samples (null for final pair).
- * @param {bool} force - (default false does / true does not) verify population use.
+ * @param {bool} force - (default false does / true does not) validate use.
  */
 const cook = (population, sample, feature, pairs, force=false) => {
 
@@ -53,12 +60,10 @@ const cook = (population, sample, feature, pairs, force=false) => {
                           : null
   )
 
-  const rest = population.filter(m => !used.includes(m))  // set difference
+  if (!force && used.length > population.length) return undefined  // non-members
 
-  if (!force
-      && !rest.length
-      && used.length > population.length
-  ) return undefined  // over population - set of all pair samples larger
+
+  const rest = population.filter(m => !used.includes(m))  // set difference
 
   const variation = derived[derived.length-1][0]
   derived[(derived.length - 1)] = [variation, rest]  // complete population
