@@ -49,7 +49,7 @@ Derive an array of objects from pairs that map population samples to distinct fe
 
 The default (but optional) validation ensures:
 
-*   population and pairs both are non-empty arrays
+*   population and pairs both are non-empty arrays of non-null values
 *   features are unique (first elements of pairs)
 *   pairs second entries only provide members of population
 

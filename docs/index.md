@@ -41,11 +41,12 @@ Software developers only have to list the smallest subsets and the cooking adds 
 
 In default mode (without setting the optional `force` parameter to `true`) the `cook` function validates these aspects:
 
-*   population and pairs both are non-empty arrays
+*   population and pairs both are non-empty arrays of non-null values
 *   features are unique (first elements of pairs)
 *   pairs second entries only provide members of population
 
-If any validation of those aspects fails, `cook` returns `undefined` as (error) value.
+If any validation of those aspects fails, `cook` returns `undefined` as (error) value. 
+**Note**: Null values will be cleansed from population per default.
 
 ## Status
 
