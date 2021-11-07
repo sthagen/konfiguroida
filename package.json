@@ -26,5 +26,5 @@
     "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
     "test:html": "c8 report --reporter=html"
   },
-  "version": "2021.11.7"
+  "version": "2021.11.8"
 }
