@@ -1,7 +1,8 @@
 /**
- * Returns a function with the first argument primed.
+ * Partially apply to a function the first argument and return specialization.
  * @param {function} func - function to be specialized.
  * @param {string} first - value to be fixed as first positional argument.
+ * @returns {function} function with the first argument primed.
  */
 const partial = (func, first) => {
   return (...rest) => {
@@ -10,9 +11,10 @@ const partial = (func, first) => {
 }
 
 /**
- * Returns a function that creates a pair object.
+ * Create zipper for pairs that creates a pair object given two parameters.
  * @param {string} first - key mapping to the first positional value.
  * @param {string} second - key mapping to the second and last positional value.
+ * @returns {function} that creates a pair object.
  */
 const zip_pair = (first, second) => {
   return (left, right) => ({[first]: left, [second]: right})
@@ -21,6 +23,9 @@ const zip_pair = (first, second) => {
 /**
  * We invented a wheel again - hooray
  *
+ * @param {*} me - maybe an object.
+ * @param {*} you - maybe an object.
+ * @returns {bool} true if deeply equal.
  */
 const deep_equal = (me, you) => {
   if (!is_object(me) || !is_object(you)) return me === you
@@ -42,11 +47,13 @@ const deep_equal = (me, you) => {
 /**
  * We invented another wheel again - hip, hip, hooray
  *
+ * @param {*} thing - maybe an object.
+ * @returns {bool} true if given an object.
  */
 const is_object = thing => thing != null && typeof thing === 'object'
 
 /**
- * Returns an array of objects that map population samples to distinct features.
+ * Derive an array of objects from pairs that map population samples to distinct features.
  *
  * The default (but optional) validation ensures:
  *
@@ -58,7 +65,8 @@ const is_object = thing => thing != null && typeof thing === 'object'
  * @param {string} sample - key mapping to the sample from the population.
  * @param {string} feature - key mapping to the feature variations.
  * @param {array} pairs - pairs of features and array of samples (null for final pair).
- * @param {bool} force - (default false does / true does not) validate use.
+ * @param {bool} [force=false] - (false does / true does not) validate use.
+ * @returns {array} of objects that map population samples to distinct features.
  */
 const cook = (population, sample, feature, pairs, force=false) => {
 
