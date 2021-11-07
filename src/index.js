@@ -1,5 +1,5 @@
 /**
- * Returns an function with the first argument primed.
+ * Returns a function with the first argument primed.
  * @param {function} func - function to be specialized.
  * @param {string} first - value to be fixed as first positional argument.
  */
