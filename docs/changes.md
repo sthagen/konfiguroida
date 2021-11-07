@@ -2,8 +2,9 @@
 
 ## 2021.11.9
 
+* Fixed null validation of and added null cleansing for population
 * Extended engine compatibility downwards per github issue [#6 - Extend true compatibility down to node](https://github.com/sthagen/konfiguroida/issues/6)
-* Added more tests to document _abuse_ cases
+* Added more tests to document _abuse_ and corner cases
 
 ## 2021.11.8
 
