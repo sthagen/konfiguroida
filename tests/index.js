@@ -149,6 +149,83 @@ test('cook non-member population validated', () => {
   assert.is(what, undefined)
 })
 
+test('cook corner case population with additional null member', () => {
+  const FRUITS = ['apples', null]
+  const bizarre = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['apples']], [{size: 'XXL'}, null]]
+  )
+  assert.equal(bizarre, [
+    {confiture: {size: 'XXS'}, fruits: ['apples']},
+    {confiture: {size: 'XXL'}, fruits: []}
+  ])
+})
+
+test('cook corner case population with additional undefined member', () => {
+  const FRUITS = ['apples', undefined]
+  const bizarre = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['apples']], [{size: 'XXL'}, null]]
+  )
+  assert.equal(bizarre, [
+    {confiture: {size: 'XXS'}, fruits: ['apples']},
+    {confiture: {size: 'XXL'}, fruits: [undefined]}
+  ])
+})
+
+test('cook corner case population with additional undefined and friends members', () => {
+  const FRUITS = ['apples', undefined, false, true, [], {}, 42, Symbol()]
+  const bizarre = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['apples']], [{size: 'XXL'}, null]]
+  )
+  assert.equal(JSON.stringify(bizarre), JSON.stringify([
+    {confiture: {size: 'XXS'}, fruits: ['apples']},
+    {confiture: {size: 'XXL'}, fruits: [undefined, false, true, [], {}, 42, null]}
+  ]))
+})
+
+test('cook abuse case population with single null member', () => {
+  const FRUITS = [null]
+  const cleansed = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, null], [{size: 'XXL'}, null]]
+  )
+  assert.is(cleansed, undefined)
+})
+
+test('cook many, many, and many', () => {
+  const FRUITS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const masses = cook(
+    FRUITS,
+    'f',
+    'c',
+    [[1, [1]], [2, [2]], [3, [3]], [4, [4]], [5, [5]], [6, [6]], [7, [7]], [8, [8]], [9, [9]], [10, [10]], [11, [11]], [{thing: 12}, null]]
+  )
+  assert.equal(masses, [
+    {c: 1, f: [1]},
+    {c: 2, f: [2]},
+    {c: 3, f: [3]},
+    {c: 4, f: [4]},
+    {c: 5, f: [5]},
+    {c: 6, f: [6]},
+    {c: 7, f: [7]},
+    {c: 8, f: [8]},
+    {c: 9, f: [9]},
+    {c: 10, f: [10]},
+    {c: 11, f: [11]},
+    {c: {thing: 12}, f: [12]}
+  ])
+})
+
 test('example', () => {
   // Some population to sample from:
   const FRUITS = ['apples', 'currants', 'oranges', 'peaches', 'pears']
