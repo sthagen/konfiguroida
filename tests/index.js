@@ -105,6 +105,17 @@ test('cook unique but overlapping features validated', () => {
   ])
 })
 
+test('cook unique but overlapping nested features validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: {here: 'XXS', there: 64}}, ['currants']], [{size: {here: 'XXS', there: 64}}, null]]
+  )
+  assert.is(what, undefined)
+})
+
 test('cook duplicate deep features validated', () => {
   const FRUITS = ['currants']
   const what = cook(
