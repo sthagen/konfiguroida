@@ -75,6 +75,17 @@ test('cook over population validated', () => {
     FRUITS,
     'fruits',
     'confiture',
+    [[{size: 'XXS'}, ['currants', 'currants']], [{size: 'XXL'}, null]]
+  )
+  assert.is(what, undefined)
+})
+
+test('cook non-member population validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
     [[{size: 'XXS'}, ['apples']], [{size: 'XXL'}, null]]
   )
   assert.is(what, undefined)
