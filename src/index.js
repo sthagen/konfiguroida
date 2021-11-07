@@ -19,6 +19,33 @@ const zip_pair = (first, second) => {
 }
 
 /**
+ * We invented a wheel again - hooray
+ *
+ */
+const deep_equal = (me, you) => {
+  if (!is_object(me) || !is_object(you)) return me === you
+
+  const [my_keys, your_keys] = [Object.keys(me), Object.keys(you)]
+  if (my_keys.length !== your_keys.length) return false;
+
+  for (const key of my_keys) {
+    const [my_val, your_val] = [me[key], you[key]]
+    const are_objects = is_object(my_val) && is_object(your_val)
+    if (
+      are_objects && !deep_equal(my_val, your_val) ||
+      !are_objects && my_val !== your_val
+    ) return false
+  }
+  return true
+}
+
+/**
+ * We invented another wheel again - hip, hip, hooray
+ *
+ */
+const is_object = thing => thing != null && typeof thing === 'object'
+
+/**
  * Returns an array of objects that map population samples to distinct features.
  *
  * The default (but optional) validation ensures:
@@ -46,12 +73,20 @@ const cook = (population, sample, feature, pairs, force=false) => {
   derived = [...pairs]  // Create a copy of the pairs array
 
   if (!force) {
-    const unique_features = []
-    derived.forEach(pair => unique_features.indexOf(pair[0]) === -1
-                            ? unique_features.push(pair[0])
+    const features = []
+    derived.forEach(pair => features.indexOf(pair[0]) === -1
+                            ? features.push(pair[0])
                             : null
     )
-    if (pairs.length !== unique_features.length) return undefined  // duplicates
+    if (pairs.length !== features.length) return undefined  // simple duplicates
+
+    for (let i = 0; i < features.length; ++i) {
+      for (let j = 0; j < features.length; ++j) {
+        if (i < j
+            && deep_equal(features[i], features[j])
+        ) return undefined  // deep duplicates
+      }
+    }
   }
 
   const used = []  // registry of used population members

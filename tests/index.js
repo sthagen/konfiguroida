@@ -69,6 +69,53 @@ test('cook non-array pairs validated', () => {
   assert.is(what, undefined)
 })
 
+test('cook duplicate simple features validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[true, ['currants']], [true, null]]
+  )
+  assert.is(what, undefined)
+})
+
+test('cook duplicate simple/object features validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[true, ['currants']], [{}, null], [{}, null]]
+  )
+  assert.is(what, undefined)
+})
+
+test('cook unique but overlapping features validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS', me: 'special'}, ['currants']], [{size: 'XXS'}, null]]
+  )
+  assert.equal(what, [
+    {confiture: {size: 'XXS', me: 'special'}, fruits: ['currants']},
+    {confiture: {size: 'XXS'}, fruits: []}
+  ])
+})
+
+test('cook duplicate deep features validated', () => {
+  const FRUITS = ['currants']
+  const what = cook(
+    FRUITS,
+    'fruits',
+    'confiture',
+    [[{size: 'XXS'}, ['currants']], [{size: 'XXS'}, null]]
+  )
+  assert.is(what, undefined)
+})
+
 test('cook over population validated', () => {
   const FRUITS = ['currants']
   const what = cook(
