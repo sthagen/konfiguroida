@@ -57,7 +57,7 @@ const is_object = thing => thing != null && typeof thing === 'object'
  *
  * The default (but optional) validation ensures:
  *
- * * population and pairs both are non-empty arrays
+ * * population and pairs both are non-empty arrays of non-null values
  * * features are unique (first elements of pairs)
  * * pairs second entries only provide members of population
  *
@@ -70,13 +70,17 @@ const is_object = thing => thing != null && typeof thing === 'object'
  */
 const cook = (population, sample, feature, pairs, force=false) => {
 
-  if (!force
-      && (   !(population instanceof Array)
-          || !population.length
-          || !(pairs instanceof Array)
-          || !pairs.length
-      )
-  ) return undefined  // population or pairs no arrays or empty
+  if (!force) {
+    if (!(population instanceof Array)
+        || !population.length
+        || !(pairs instanceof Array)
+        || !pairs.length
+    ) return undefined  // population or pairs no arrays or empty
+    if (population.indexOf(null) !== -1) {
+      population = population.filter(p => p != null)
+    }
+    if (!population.length) return undefined  // cleansed population empty
+  }
 
   derived = [...pairs]  // Create a copy of the pairs array
 
