@@ -20,7 +20,7 @@ const cook = (population, sample, feature, pairs) => {
   const used = []  // registry of used population members
   derived.forEach(pair => pair[1] ? pair[1].forEach(e => used.push(e)) : null)
 
-  const rest = population.filter(m => !used.includes(m))  // naive set difference
+  const rest = population.filter(m => !used.includes(m))  // set difference
 
   const variation = derived[derived.length-1][0]
   derived[(derived.length - 1)] = [variation, rest]  // complete population
