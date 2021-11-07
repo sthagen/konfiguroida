@@ -47,6 +47,7 @@ nav:
   - Install: 'install.md'
   - Usage: 'usage.md'
   - API: 'api.md'
+  - Developer: 'developer.md'
   - Changes: 'changes.md'
 
 markdown_extensions:
