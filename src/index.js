@@ -39,12 +39,12 @@ const cook = (population, sample, feature, pairs, force=false) => {
   derived = [...pairs]  // Create a copy of the pairs array
 
   if (!force) {
-    const unique = []
-    derived.forEach(pair => unique.indexOf(pair[0]) === -1
-                            ? unique.push(pair[0])
+    const unique_features = []
+    derived.forEach(pair => unique_features.indexOf(pair[0]) === -1
+                            ? unique_features.push(pair[0])
                             : null
     )
-    if (pairs.length !== unique.length) return undefined  // duplicate features
+    if (pairs.length !== unique_features.length) return undefined  // duplicates
   }
 
   const used = []  // registry of used population members
@@ -54,6 +54,11 @@ const cook = (population, sample, feature, pairs, force=false) => {
   )
 
   const rest = population.filter(m => !used.includes(m))  // set difference
+
+  if (!force
+      && !rest.length
+      && used.length > population.length
+  ) return undefined  // over population - set of all pair samples larger
 
   const variation = derived[derived.length-1][0]
   derived[(derived.length - 1)] = [variation, rest]  // complete population
