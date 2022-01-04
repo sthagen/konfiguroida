@@ -4,7 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "c8": "^7.10.0",
-    "uvu": "^0.5.2"
+    "uvu": "^0.5.3"
   },
   "description": "Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.",
   "engines": {
