@@ -19,12 +19,17 @@ indent_size = 2
 
 # Makefiles require tabs
 [Makefile]
-indent_style = tabs
+indent_style = tab
 indent_size = 4
 
 # 4 space indentation
 [*.{py,java,r,R}]
 indent_style = space
+indent_size = 4
+
+# 4 tab indentation
+[*.go]
+indent_style = tab
 indent_size = 4
 
 # 2 space indentation
@@ -38,7 +43,7 @@ indent_style = space
 indent_size = 2
 
 # JavaScript-specific settings
-[*.{js,ts}]
+[*.{js,ts,vue}]
 quote_type = single
 indent_style = space
 indent_size = 2
@@ -47,3 +52,4 @@ curly_bracket_next_line = false
 indent_brace_style = BSD
 spaces_around_operators = true
 spaces_around_brackets = none
+max_line_length = 150
