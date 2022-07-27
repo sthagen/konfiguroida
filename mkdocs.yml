@@ -26,16 +26,16 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sthagen/konfiguroida
+      link: https://git.sr.ht/~sthagen/konfiguroida
     - icon: fontawesome/brands/npm
       link: https://www.npmjs.com/package/konfiguroida
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/shage
 
-copyright: Copyright &copy; 2021 Stefan Hagen under the MIT license
+copyright: Copyright &copy; 2022 Stefan Hagen under the MIT license
 
-repo_name: sthagen/konfiguroida
-repo_url: https://github.com/sthagen/konfiguroida
+repo_name: ~sthagen/konfiguroida
+repo_url: https://git.sr.ht/~sthagen/konfiguroida
 edit_uri: ""
 
 plugins:
@@ -49,6 +49,7 @@ nav:
   - API: 'api.md'
   - Developer: 'developer.md'
   - Changes: 'changes.md'
+  - Test Coverage: https://codes.dilettant.life/coverage/konfiguroida/
 
 markdown_extensions:
   - mkautodoc

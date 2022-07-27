@@ -1,6 +1,6 @@
 {
   "author": "Stefan Hagen <stefan@hagen.link> (https://stefan-hagen.website)",
-  "bugs": "https://github.com/sthagen/konfiguroida/issues",
+  "bugs": "https://todo.sr.ht/~sthagen/konfiguroida",
   "dependencies": {},
   "devDependencies": {
     "c8": "^7.11.0",
@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=6"
   },
-  "homepage": "https://sthagen.github.io/konfiguroida/",
+  "homepage": "https://codes.dilettant.life/docs/konfiguroida/",
   "keywords": [
     "configuration",
     "developer-tools"
@@ -19,7 +19,7 @@
   "main": "src/index.js",
   "name": "konfiguroida",
   "private": false,
-  "repository": "github:sthagen/konfiguroida",
+  "repository": "https://git.sr.ht/~sthagen/konfiguroida",
   "scripts": {
     "test": "uvu tests",
     "test:coverage": "c8 --include=src npm test",
