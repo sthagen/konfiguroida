@@ -1,15 +1,33 @@
-# konfiguroida
+# Konfiguroida
 
 Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.
+
+[License: MIT](https://git.sr.ht/~sthagen/konfiguroida/tree/default/item/LICENSE)
+
+[![npm version](https://badge.fury.io/js/konfiguroida.svg)](https://www.npmjs.com/package/konfiguroida)
+[![npm](https://img.shields.io/npm/dm/konfiguroida.svg)](https://www.npmjs.com/package/konfiguroida)
+
+## Documentation
+
+User and developer [documentation of konfiguroida](https://codes.dilettant.life/docs/konfiguroida).
+
+## Bug Tracker
+
+Feature requests and bug reports are bested entered in the [todos of konfiguroida](https://todo.sr.ht/~sthagen/konfiguroida).
+
+## Primary Source repository
+
+The primary source repository of [konfiguroida is at sourcehut](https://git.sr.ht/~sthagen/konfiguroida)
+a collection of tools useful for software development.
 
 ## Installation
 
 ```console
 # using npm
-npm install konfiguroida
+❯ npm install konfiguroida
 
 # using yarn
-yarn add konfiguroida
+❯ yarn add konfiguroida
 ```
 
 ## Usage
