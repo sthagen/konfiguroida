@@ -2,8 +2,8 @@
 
 ```console
 # using npm
-npm install konfiguroida
+❯ npm install konfiguroida
 
 # using yarn
-yarn add konfiguroida
+❯ yarn add konfiguroida
 ```

@@ -1,10 +1,20 @@
-# konfiguroida
+# Konfiguroida
 
-[![license](https://img.shields.io/github/license/sthagen/konfiguroida.svg?style=flat)](https://github.com/sthagen/konfiguroida/blob/default/LICENSE)
+Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.
+
+[License: MIT](https://git.sr.ht/~sthagen/konfiguroida/tree/default/item/LICENSE)
+
 [![npm version](https://badge.fury.io/js/konfiguroida.svg)](https://www.npmjs.com/package/konfiguroida)
 [![npm](https://img.shields.io/npm/dm/konfiguroida.svg)](https://www.npmjs.com/package/konfiguroida)
 
-Confiture (Finnish konfiguroida) with whole fruits - data oriented programming for configuration and friends.
+## Bug Tracker
+
+Feature requests and bug reports are bested entered in the [todos of konfiguroida](https://todo.sr.ht/~sthagen/konfiguroida).
+
+## Primary Source repository
+
+The primary source repository of [konfiguroida is at sourcehut](https://git.sr.ht/~sthagen/konfiguroida)
+a collection of tools useful for software development.
 
 ## Synopsis
 
@@ -47,9 +57,3 @@ In default mode (without setting the optional `force` parameter to `true`) the `
 
 If any validation of those aspects fails, `cook` returns `undefined` as (error) value. 
 **Note**: Null values will be cleansed from population per default.
-
-## Status
-
-Experimental.
-
-**Note**: The default branch is `default`.
