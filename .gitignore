@@ -106,3 +106,5 @@ weg.js
 package-lock.json
 site/
 docs/local_api.md
+local_*
+.python-version
