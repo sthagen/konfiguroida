@@ -1,5 +1,13 @@
 # Change History
 
+## 2022.7.27
+
+* Bumped dependencies
+* Moved documentation to [codes.dilettant.life/docs](https://codes.dilettant.life/docs/konfiguroida)
+* Moved tracker to [todo.sr.ht/~sthagen](https://todo.sr.ht/~sthagen/konfiguroida)
+* Moved normative source repo to [git.sr.ht/~sthagen](https://git.sr.ht/~sthagen/konfiguroida)
+* Provide test coverage documentation at [codes.dilettant.life/coverage](https://codes.dilettant.life/coverage/konfiguroida)
+
 ## 2021.11.9
 
 * Fixed null validation of and added null cleansing for population
