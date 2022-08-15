@@ -13,8 +13,12 @@ Feature requests and bug reports are bested entered in the [todos of konfiguroid
 
 ## Primary Source repository
 
-The primary source repository of [konfiguroida is at sourcehut](https://git.sr.ht/~sthagen/konfiguroida)
-a collection of tools useful for software development.
+The primary source of `konfiguroida` lives somewhere on a mountain in Central Switzerland.
+But, we use decentralized version control (git), so any clone can become the source to everyone's benefit, no central only code.
+Anyway, the preferred public clones of `konfiguroida` are:
+
+* [on codeberg](https://codeberg.org/sthagen/konfiguroida) - a collaboration platform and git hosting for free and open source software, content and projects.
+* [at sourcehut](https://git.sr.ht/~sthagen/konfiguroida) - a collection of tools useful for software development.
 
 ## Synopsis
 
@@ -56,4 +60,5 @@ In default mode (without setting the optional `force` parameter to `true`) the `
 *   pairs second entries only provide members of population
 
 If any validation of those aspects fails, `cook` returns `undefined` as (error) value. 
+
 **Note**: Null values will be cleansed from population per default.
