@@ -24,6 +24,7 @@ theme:
 
 extra:
   generator: false
+  homepage: https://codes.dilettant.life/docs/
   social:
     - icon: fontawesome/brands/npm
       link: https://www.npmjs.com/package/konfiguroida
