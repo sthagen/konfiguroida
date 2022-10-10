@@ -33,3 +33,13 @@ console.log(confitures)
 //  }
 //]
 ```
+
+The same result is also achieved for:
+
+```javascript
+// ...
+const confitures = cookFromFruitsConfiture([
+  [{size: 'XXS'}, ['currants']], 
+  [{size: 'XXL'}]
+])
+```
