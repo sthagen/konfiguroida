@@ -1,5 +1,9 @@
 # Change History
 
+## 2022.10.11
+
+* Fixed repository link
+
 ## 2022.7.27
 
 * Bumped dependencies
