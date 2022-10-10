@@ -95,12 +95,7 @@ const cook = (population, sample, feature, pairs, force=false) => {
 
   if (!force) {
       if (used.length > population.length) return undefined  // over population
-      const aliens = []
-      used.forEach(e => population.indexOf(e) === -1
-                            ? aliens.push(e)
-                            : null
-      )
-      if (aliens.length) return undefined  // non-members
+      if (used.some(e => population.indexOf(e) === -1)) return undefined  // non-members
   }
 
   const rest = population.filter(m => !used.includes(m))  // set difference
