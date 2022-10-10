@@ -86,16 +86,17 @@ const cook = (population, sample, feature, pairs, force=false) => {
 
   if (!force) {
     const features = derived.map(pair => pair[0]).filter((el, ndx, arr) => arr.indexOf(el) === ndx)
-    if (pairs.length !== features.length) return undefined  // simple duplicates
-    // deep duplicates?
-    if (!features.every((xi, i, arr) => arr.every((xj, j) => i === j || !deep_equal(xi, xj)))) return undefined
+    if ((pairs.length !== features.length)  // simple duplicates
+        || (!features.every((xi, i, arr) => arr.every((xj, j) => i === j || !deep_equal(xi, xj))))  // deep duplicates
+    ) return undefined
   }
 
   const used = derived.map(pair => pair[1]).filter(arr => arr).flat()  // registry of used population members
 
   if (!force) {
-      if (used.length > population.length) return undefined  // over population
-      if (used.some(e => population.indexOf(e) === -1)) return undefined  // non-members
+    if ((used.length > population.length)  // over population
+        || (used.some(e => population.indexOf(e) === -1))  // non-members
+    ) return undefined
   }
 
   const rest = population.filter(m => !used.includes(m))  // set difference
