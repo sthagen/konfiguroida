@@ -34,7 +34,7 @@ console.log(confitures)
 //]
 ```
 
-The same result is also achieved for:
+The same result is also achieved when leaving out the final placeholder:
 
 ```javascript
 // ...
