@@ -1,8 +1,9 @@
 # Change History
 
-## 2022.10.11
+## 2022.10.10
 
 * Fixed repository link
+* Simplified implementation (kudos to Jarek)
 
 ## 2022.7.27
 
