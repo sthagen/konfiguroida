@@ -91,11 +91,12 @@ const cook = (population, sample, feature, pairs, force=false) => {
     if (!features.every((xi, i, arr) => arr.every((xj, j) => i === j || !deep_equal(xi, xj)))) return undefined
   }
 
-  const used = []  // registry of used population members
-  derived.forEach(pair => pair[1]
+  // const used = []  // registry of used population members
+  const used = derived.map(pair => pair[1]).filter(el => el).flat()
+  /*derived.forEach(pair => pair[1]
                           ? pair[1].forEach(e => used.push(e))
                           : null
-  )
+  )*/
 
   if (!force) {
       if (used.length > population.length) return undefined  // over population
