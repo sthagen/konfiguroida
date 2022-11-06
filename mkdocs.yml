@@ -3,6 +3,9 @@ site_description: Confiture (Finnish konfiguroida) with whole fruits - data orie
 
 theme:
   name: 'material'
+  features:
+    - navigation.expand
+    - toc.integrate
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
@@ -33,7 +36,7 @@ extra:
 
 copyright: Copyright &copy; 2022 Stefan Hagen under the MIT license
 
-repo_name: ~sthagen/konfiguroida
+repo_name: sthagen/konfiguroida
 repo_url: https://git.sr.ht/~sthagen/konfiguroida
 edit_uri: ""
 
